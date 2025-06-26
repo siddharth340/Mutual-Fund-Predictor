@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mutual Fund Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #004080;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    select {
+      width: 100%;
+      padding: 5px;
+    }
+
+    button {
+      background-color: lightblue;
+      border: 1px solid blue;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .table-container {
+      display: none;
+      margin-top: 30px;
+    }
+
+    /* Added styling for CSV link */
+    .csv-link {
+      margin: 20px 0;
+    }
+
+    .csv-link a {
+      color: #d14;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .csv-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+ <h1>Mutual Fund Predictor</h1>
+
+<p class="quote">"Do not save what is left after spending, but spend what is left after saving." — Warren Buffett</p>
+
+
+  <p class="quote">Hi, welcome to Mutual Fund Predictor, your guide to choosing the right mutual funds for your needs. The process is simple - just answer a few questions about what you want and what you need, and we will suggest the top 3 funds for you from out 1700+ mutual fund database.  <div class="csv-link">
+    <!-- Replace 'MF_23Jun2025.csv' with your actual CSV file path -->
+    <a href="MF_23JUn2025.csv" target="_blank"> Let's get started here -List of Mutual Funds</a>
+  </div>
+</p>
+
+
+  
+  
+    <!-- Form -->
+  <form id="quizForm">
+    <label for="question1">What kind of return are you looking for?</label><br /><br />
+    <select id="question1" name="question1" required>
+      <option value="" disabled selected>--Select an answer--</option>
+      <option value="modest returns">I'm ok with modest returns if my money is safe</option>
+      <option value="decent growth">I want a balance-decent growth with some safety</option>
+      <option value="high returns">I want the highest possible returns, even if it means taking a big risk</option>
+    </select>
+
+    <br /><br />
+
+    <label for="question2">How do you feel about risk?</label><br /><br />
+    <select id="question2" name="question2" required>
+      <option value="" disabled selected>--Select an answer--</option>
+      <option value="safety">I don't want any risk - my money's safety is my first priority</option>
+      <option value="decent returns">I can handle some ups and downs, as I get decent returns</option>
+      <option value="high returns">I'm fine with taking big risks, if I get high returns</option>
+    </select>
+
+    <br /><br />
+
+    <label for="question3">How long do you want to invest your money for?</label><br /><br />
+    <select id="question3" name="question3" required>
+      <option value="" disabled selected>--Select an answer--</option>
+      <option value="short time">Less than a year</option>
+      <option value="moderate">1-3 years</option>
+      <option value="long time">3+ years</option>
+    </select>
+
+    <br /><br />
+
+    <button type="submit">Submit</button>
+  </form>
+
+
+  <!-- Table: hidden initially -->
+  <div class="table-container" id="resultTable">
+    <h2>Suggested Mutual Funds</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Funds</th>
+          <th>Rating</th>
+          <th>1 year ret(%)</th>
+          <th>1 year rank</th>
+          <th>Riskometer</th>
+          <th>Category</th>
+          <th>Expense ratio(%)</th>
+          <th>Launch</th>
+          <th>Net assets(cr)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const q1 = document.getElementById("question1").value;
+      const q2 = document.getElementById("question2").value;
+      const q3 = document.getElementById("question3").value;
+
+      if (q1 && q2 && q3) {
+        document.getElementById("resultTable").style.display = "block";
+        // Scroll to table (optional)
+        document.getElementById("resultTable").scrollIntoView({ behavior: "smooth" });
+      } else {
+        alert("Please select answers for all questions.");
+      }
+    });
+  </script>
+
+</body>
+</html>
